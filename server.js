@@ -26,15 +26,36 @@ app.get('/', function(req, res){
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
+var Schema = mongoose.Schema;
+var UrlSchema = new Schema({
+  original_url : String,
+  short_url : Number
   
+});
+
+var Url = mongoose.model("Url", UrlSchema)  
 // your first API endpoint... 
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
 app.post("/api/shorturl/new", function(req, res){
-  var oldURL = req.params.new;
-  res.json({"original_url": oldURL,  "short_url": ""})
+  
+  var createAndSaveUrl = function(done) {
+  var inputUrl = new Url({
+  "old_url": req.params.new,
+  "short_url": ""
+  });
+
+  inputUrl.save(function(err, data){
+  if (err) return done(err);
+  
+  done(null, data);
+
+})};
+
+  
+  
 });
 
 app.listen(port, function () {
