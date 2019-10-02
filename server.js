@@ -32,9 +32,9 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-app.get("/api/shorturl/new", function(req, res){
-  
-  res.json({"original_url":"", "short_url": ""})
+app.post("/api/shorturl/new", function(req, res){
+  var oldURL = req.params.new;
+  res.json({"original_url": oldURL,  "short_url": ""})
 });
 
 app.listen(port, function () {
