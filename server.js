@@ -13,12 +13,13 @@ var port = process.env.PORT || 3000;
 
 /** this project needs a db !! **/ 
 // mongoose.connect(process.env.MONGOLAB_URI);
-
+process.env.MONGO_URI = 'mongodb+srv://zgleman:grey1127@cluster0-2my3z.mongodb.net/test?retryWrites=true&w=majority';
+mongoose.connect(process.env.MONGO_URI);
 app.use(cors());
 
 /** this project needs to parse POST bodies **/
 // you should mount the body-parser here
-
+var bodyParser = require('body-parser');
 app.use('/public', express.static(process.cwd() + '/public'));
 
 app.get('/', function(req, res){
