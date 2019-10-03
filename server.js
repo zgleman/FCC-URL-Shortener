@@ -29,8 +29,8 @@ app.get('/', function(req, res){
 
 var Schema = mongoose.Schema;
 var UrlSchema = new Schema({
-  "original_url" : String,
-  "short_url" : Number
+  original_url : String,
+  short_url : Number
   
 });
 
@@ -47,14 +47,14 @@ app.post("/api/shorturl/new", function(req, res){
    }
   });
   var shortUrl = Math.floor(Math.random*100).toString;
-  var inputUrl = new UrlSchema({
-  "original_url": urlToShorten,
-  "short_url": shortUrl
+  var inputUrl = new Url({
+  original_url: urlToShorten,
+  short_url: shortUrl
   });
   inputUrl.save(function(err){
   if (err) return "Error Saving Data";
   });
-  res.json()
+  return res.json({inputUrl})
   
   
 });
