@@ -46,7 +46,7 @@ app.post("/api/shorturl/new", function(req, res){
      return res.json({"error": "invalid URL"});
    }
   });
-  var shortUrl = Math.floor(Math.random*100).toString;
+  var shortUrl = Math.floor(Math.random()*100);  
   var inputUrl = new Url({
   original_url: urlToShorten,
   short_url: shortUrl
@@ -55,8 +55,15 @@ app.post("/api/shorturl/new", function(req, res){
   if (err) return "Error Saving Data";
   });
   return res.json({inputUrl})
-  
-  
+});
+
+app.get("/api/shorturl/:number", function(req, res){
+  var shortUrl = req.params.number;
+  console.log(shortUrl);
+  Url.findOne({short_url: shortUrl}, function(err, data){
+    if (err) return res.send("Error reading database");
+    res.redirect(301, data.original_url);
+  });
 });
 
 app.listen(port, function () {
