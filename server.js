@@ -38,8 +38,9 @@ var Url = mongoose.model("Url", UrlSchema)
 // your first API endpoint... 
 app.post("/api/shorturl/new", function(req, res){
   var urlToShorten = req.body.url;
-  console.log(urlToShorten);
-  dns.lookup("www.freecodecamp.org", function (err, address) {
+  var testedUrl = urlToShorten;
+  (/https:\/\//).test(testedUrl) ? testedUrl = testedUrl.slice(8) : (/http:\/\//).test(testedUrl) ? testedUrl = testedUrl.slice(7): null;
+  dns.lookup(testedUrl, function (err, address) {
    if (err) {
      console.log(err);
      return res.json({"error": "invalid URL"});
