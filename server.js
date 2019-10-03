@@ -3,7 +3,7 @@
 var express = require('express');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
-
+var dns = require('dns');
 var cors = require('cors');
 
 var app = express();
@@ -39,9 +39,12 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-app.post("/api/shorturl/new", function(req, res){
-  var urlToShorten = req.body.url;
-  
+app.post("/api/shorturl/new", upload.array(),function(req, res){
+  var urlToShorten = req.body;
+  console.log(urlToShorten);
+  dns.lookup(urlToShorten, function (err, addresses, family) {
+   if (err) return res.json({"error": "invalid URL"});
+  });
   var createAndSaveUrl = function(done) {
   var inputUrl = new Url({
   "old_url": urlToShorten,
