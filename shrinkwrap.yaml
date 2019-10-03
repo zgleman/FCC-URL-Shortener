@@ -2,7 +2,7 @@ dependencies:
   body-parser: 1.19.0
   cors: 2.8.5
   express: 5.0.0-alpha.7
-  mongodb: 2.2.36
+  mongodb: 3.3.2
   mongoose: 5.7.3
 packages:
   /accepts/1.3.7:
@@ -56,22 +56,12 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-dhEPs72UPbDnAQJ9ZKMNTP6ptJaionhP5cBb541nXPlW60Jepo9RV/a4fX4XWW9CuFNK22krhrj1+rgzifNCsw==
-  /bson/1.0.9:
-    dev: false
-    engines:
-      node: '>=0.6.19'
-    resolution:
-      integrity: sha512-IQX9/h7WdMBIW/q/++tGd+emQr0XMdeZ6icnT/74Xk9fnabWn+gZgpE+9V+gujL3hhJOoNrnDVY7tWdzc7NUTg==
   /bson/1.1.1:
     dev: false
     engines:
       node: '>=0.6.19'
     resolution:
       integrity: sha512-jCGVYLoYMHDkOsbwJZBCqwMHyH4c+wzgI9hG7Z6SZJRXWr+x58pdIbm2i9a/jFGCkRJqRUr8eoI7lDWa0hTkxg==
-  /buffer-shims/1.0.0:
-    dev: false
-    resolution:
-      integrity: sha1-mXjOMXOIxkmth5MCjDR37wRKi1E=
   /bytes/3.0.0:
     dev: false
     engines:
@@ -106,10 +96,6 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-5+Ch+e9DtMi6klxcWpboBtFoc7s=
-  /core-util-is/1.0.2:
-    dev: false
-    resolution:
-      integrity: sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
   /cors/2.8.5:
     dependencies:
       object-assign: 4.1.1
@@ -151,10 +137,6 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k=
-  /es6-promise/3.2.1:
-    dev: false
-    resolution:
-      integrity: sha1-7FYjOGgDKQkgcXDDlEjiREndH8Q=
   /escape-html/1.0.3:
     dev: false
     resolution:
@@ -272,20 +254,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
-  /inherits/2.0.4:
-    dev: false
-    resolution:
-      integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
   /ipaddr.js/1.9.0:
     dev: false
     engines:
       node: '>= 0.10'
     resolution:
       integrity: sha512-M4Sjn6N/+O6/IXSJseKqHoFc+5FdGJ22sXqnjTpdZweHK64MzEPAyQZyEU3R/KRv2GLoa7nNtg/C2Ev6m7z+eA==
-  /isarray/1.0.0:
-    dev: false
-    resolution:
-      integrity: sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=
   /kareem/2.3.1:
     dev: false
     resolution:
@@ -325,23 +299,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-KI1+qOZu5DcW6wayYHSzR/tXKCDC5Om4s1z2QJjDULzLcmf3DvzS7oluY4HCTrc+9FiKmWUgeNLg7W3uIQvxtQ==
-  /mongodb-core/2.1.20:
-    dependencies:
-      bson: 1.0.9
-      require_optional: 1.0.1
-    dev: false
-    resolution:
-      integrity: sha512-IN57CX5/Q1bhDq6ShAR6gIv4koFsZP7L8WOK1S0lR0pVDQaScffSMV5jxubLsmZ7J+UdqmykKw4r9hG3XQEGgQ==
-  /mongodb/2.2.36:
-    dependencies:
-      es6-promise: 3.2.1
-      mongodb-core: 2.1.20
-      readable-stream: 2.2.7
-    dev: false
-    engines:
-      node: '>=0.10.3'
-    resolution:
-      integrity: sha512-P2SBLQ8Z0PVx71ngoXwo12+FiSfbNfGOClAao03/bant5DgLNkOPAck5IaJcEk4gKlQhDEURzfR3xuBG1/B+IA==
   /mongodb/3.3.2:
     dependencies:
       bson: 1.1.1
@@ -438,10 +395,6 @@ packages:
     dev: false
     resolution:
       integrity: sha1-32BBeABfUi8V60SQ5yR6G/qmf4w=
-  /process-nextick-args/1.0.7:
-    dev: false
-    resolution:
-      integrity: sha1-FQ4gt1ZZCtP5EJPyWk8q2L/zC6M=
   /proxy-addr/2.0.5:
     dependencies:
       forwarded: 0.1.2
@@ -491,18 +444,6 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-4Oz8DUIwdvoa5qMJelxipzi/iJIi40O5cGV1wNYp5hvZP8ZN0T+jiNkL0QepXs+EsQ9XJ8ipEDoiH70ySUJP3Q==
-  /readable-stream/2.2.7:
-    dependencies:
-      buffer-shims: 1.0.0
-      core-util-is: 1.0.2
-      inherits: 2.0.4
-      isarray: 1.0.0
-      process-nextick-args: 1.0.7
-      string_decoder: 1.0.3
-      util-deprecate: 1.0.2
-    dev: false
-    resolution:
-      integrity: sha1-BwV6y+JGeyIELTb5jFrVBwVOlbE=
   /regexp-clone/1.0.0:
     dev: false
     resolution:
@@ -610,12 +551,6 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
-  /string_decoder/1.0.3:
-    dependencies:
-      safe-buffer: 5.1.2
-    dev: false
-    resolution:
-      integrity: sha512-4AH6Z5fzNNBcH+6XDMfA/BTt87skxqJlO0lAh3Dker5zThcAxG6mKz+iGu308UKoPPQ8Dcqx/4JhujzltRa+hQ==
   /toidentifier/1.0.0:
     dev: false
     engines:
@@ -637,10 +572,6 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=
-  /util-deprecate/1.0.2:
-    dev: false
-    resolution:
-      integrity: sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
   /utils-merge/1.0.1:
     dev: false
     engines:
@@ -657,8 +588,8 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
-  body-parser: ^1.15.2
+  body-parser: ^1.19.0
   cors: ^2.8.1
   express: ^5.0.0-alpha.2
-  mongodb: ^2.2.5
+  mongodb: ^3.3.2
   mongoose: ^5.7.3

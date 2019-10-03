@@ -40,7 +40,7 @@ app.post("/api/shorturl/new", function(req, res){
   var urlToShorten = req.body.url;
   var testedUrl = urlToShorten;
   (/https:\/\//).test(testedUrl) ? testedUrl = testedUrl.slice(8) : (/http:\/\//).test(testedUrl) ? testedUrl = testedUrl.slice(7): null;
-  dns.lookup('/shine-ear.gomix.me\/rand-421/', function (err, address) {
+  dns.lookup('/shine-ear.gomix.me//rand-421/', function (err, address) {
    if (err) {
      console.log(err);
      return res.json({"error": "invalid URL"});
