@@ -20,6 +20,7 @@ app.use(cors());
 /** this project needs to parse POST bodies **/
 // you should mount the body-parser here
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}))
 app.use('/public', express.static(process.cwd() + '/public'));
 
 app.get('/', function(req, res){
@@ -29,7 +30,7 @@ app.get('/', function(req, res){
 var Schema = mongoose.Schema;
 var UrlSchema = new Schema({
   "original_url" : String,
-  "short_url : Number
+  "short_url" : Number
   
 });
 
@@ -38,13 +39,16 @@ var Url = mongoose.model("Url", UrlSchema)
 app.post("/api/shorturl/new", function(req, res){
   var urlToShorten = req.body.url;
   console.log(urlToShorten);
-  dns.lookup(urlToShorten, function (err, addresses, family) {
-   if (err) return res.json({"error": "invalid URL"});
+  dns.lookup("www.freecodecamp.org", function (err, address) {
+   if (err) {
+     console.log(err);
+     return res.json({"error": "invalid URL"});
+   }
   });
   var shortUrl = Math.floor(Math.random*100).toString;
   var createAndSaveUrl = function(done) {
   var inputUrl = new UrlSchema({
-  : urlToShorten,
+  "original_url": urlToShorten,
   "short_url": shortUrl
   });
   inputUrl.save(function(err, data){
