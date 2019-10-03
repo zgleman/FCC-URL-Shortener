@@ -5,7 +5,7 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var dns = require('dns');
 var cors = require('cors');
-
+var bodyParser = require('body-parser');
 var app = express();
 
 // Basic Configuration 
@@ -19,7 +19,7 @@ app.use(cors());
 
 /** this project needs to parse POST bodies **/
 // you should mount the body-parser here
-var bodyParser = require('body-parser');
+app.use(bodyParser.json());
 app.use('/public', express.static(process.cwd() + '/public'));
 
 app.get('/', function(req, res){
@@ -28,33 +28,29 @@ app.get('/', function(req, res){
 
 var Schema = mongoose.Schema;
 var UrlSchema = new Schema({
-  original_url : String,
-  short_url : Number
+  "original_url" : String,
+  "short_url : Number
   
 });
 
 var Url = mongoose.model("Url", UrlSchema)  
 // your first API endpoint... 
-app.get("/api/hello", function (req, res) {
-  res.json({greeting: 'hello API'});
-});
-
-app.post("/api/shorturl/new", upload.array(),function(req, res){
-  var urlToShorten = req.body;
+app.post("/api/shorturl/new", function(req, res){
+  var urlToShorten = req.body.url;
   console.log(urlToShorten);
   dns.lookup(urlToShorten, function (err, addresses, family) {
    if (err) return res.json({"error": "invalid URL"});
   });
+  var shortUrl = Math.floor(Math.random*100).toString;
   var createAndSaveUrl = function(done) {
-  var inputUrl = new Url({
-  "old_url": urlToShorten,
-  "short_url": ""
+  var inputUrl = new UrlSchema({
+  : urlToShorten,
+  "short_url": shortUrl
   });
-
   inputUrl.save(function(err, data){
   if (err) return done(err);
   
-  done(null, data);
+  return done(null, data);
 
 })};
 
