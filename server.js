@@ -58,11 +58,12 @@ app.post("/api/shorturl/new", function(req, res){
 });
 
 app.get("/api/shorturl/:number", function(req, res){
-  var shortUrl = req.params.number;
+  var shortUrl = Number(req.params.number);
   console.log(shortUrl);
   Url.findOne({short_url: shortUrl}, function(err, data){
     if (err) return res.send("Error reading database");
-    res.redirect(301, data.original_url);
+    console.log(data.original_url);
+    res.redirect(data.original_url);
   });
 });
 
