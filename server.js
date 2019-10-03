@@ -33,19 +33,12 @@ var UrlSchema = new Schema({
   short_url : Number
   
 });
-
+var UrlReg = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
 var Url = mongoose.model("Url", UrlSchema)  
 // your first API endpoint... 
 app.post("/api/shorturl/new", function(req, res){
   var urlToShorten = req.body.url;
-  var testedUrl = urlToShorten;
-  (/https:\/\//).test(testedUrl) ? testedUrl = testedUrl.slice(8) : (/http:\/\//).test(testedUrl) ? testedUrl = testedUrl.slice(7): null;
-  dns.lookup(urlToShorten, function (err, address, family) {
-   if (err) {
-     console.log(err);
-     return res.json({"error": "invalid URL"});
-   }
-  });
+  UrlReg.test(urlToShorten) == false ? res.json({"error":"invalid URL"}): null;
   var shortUrl = Math.floor(Math.random()*100);  
   var inputUrl = new Url({
   original_url: urlToShorten,
