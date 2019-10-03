@@ -47,18 +47,14 @@ app.post("/api/shorturl/new", function(req, res){
    }
   });
   var shortUrl = Math.floor(Math.random*100).toString;
-  var createAndSaveUrl = function(done) {
   var inputUrl = new UrlSchema({
   "original_url": urlToShorten,
   "short_url": shortUrl
   });
-  inputUrl.save(function(err, data){
-  if (err) return done(err);
-  
-  return done(null, data);
-
-})};
-
+  inputUrl.save(function(err){
+  if (err) return "Error Saving Data";
+  });
+  res.json()
   
   
 });
