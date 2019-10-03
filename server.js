@@ -40,10 +40,11 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.post("/api/shorturl/new", function(req, res){
+  var urlToShorten = req.body.url;
   
   var createAndSaveUrl = function(done) {
   var inputUrl = new Url({
-  "old_url": req.params.new,
+  "old_url": urlToShorten,
   "short_url": ""
   });
 
